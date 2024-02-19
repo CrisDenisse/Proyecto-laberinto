@@ -73,8 +73,11 @@ class Juego:
 
             # Actualizar la posición tentativa
             self.px, self.py = self.actualizar_posicion(tecla)
-
+        
+        self.mostrar_mapa()
         print("¡Has logrado salir del Laberinto, nos vemos en el siguiente módulo!")
+        input("Presiona Enter para salir...")  # Agregue esta línea
+        self.mapa[self.py][self.px] = "P"  # Mostrar la posición final
 
 class JuegoArchivo(Juego):
     def __init__(self, path_a_mapas):
@@ -100,7 +103,6 @@ class JuegoArchivo(Juego):
         return mapa, pos_inicial, pos_final
 
 # Ejemplo de uso
-# Reemplaza "C:\Users\MERCADO MUNICIPAL\Desktop\Denisse Proyectos\Proyecto laberinto parte 5\Mapas" con tu ruta completa
-path_a_mapas = r"C:\Users\MERCADO MUNICIPAL\Desktop\Denisse Proyectos\Proyecto laberinto parte 5\Mapas"
+path_a_mapas = os.path.join(os.path.dirname(__file__), "Mapas")
 juego = JuegoArchivo(path_a_mapas)
 juego.main_loop()
